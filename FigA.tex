@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks,decorations,decorations.text,shapes.gates.logic.US}
+\usepackage{pgf}
+
+\usepackage{verbatim}
+\usepackage[tightpage,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{.5mm}
+
+% Load Math commands
+\newcommand{\BC}{{\mathcal B}}
+\newcommand{\CC}{{\mathcal C}}
+\newcommand{\ep}{\epsilon}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{comment}
+:Title: Channel Pair Output and log-singularity
+\end{comment}
+
+\tikzstyle{conBox} = [draw=black, fill=white,rounded rectangle, minimum height=.7cm, minimum width=1cm]
+\tikzstyle{Textbox} = [draw=black, fill=black!60!green!60, rounded rectangle, minimum height=.8cm, minimum width=.8cm]
+\tikzstyle{openC} = [draw=black, fill=white, circle, inner sep = 0pt, outer sep=0pt, minimum size=7pt]
+\tikzstyle{closeC} = [draw=black, fill=black, circle, inner sep = 0pt, outer sep=0pt, minimum size=7pt]
+
+%Draw Pipe
+\tikzstyle{chanPipeB}=[cylinder, draw=black,thick, aspect=.25, minimum height=3cm,
+                      minimum width=1cm, cylinder uses custom fill, 
+                      cylinder body fill=red!50, cylinder end fill=red!20]
+
+\tikzstyle{chanPipeC}=[cylinder, draw=black,thick, aspect=.25, minimum height=3cm,
+                      minimum width=1cm, cylinder uses custom fill, 
+                      cylinder body fill=blue!50, cylinder end fill=blue!20]
+
+%Draw Arc in Pipe
+\newcommand\drawArc[1]{
+\draw[dashed]
+let \p1 = ($ (#1.after bottom) - (#1.before bottom) $),
+\n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
+\p2 = ($ (#1.bottom) - (#1.after bottom)!.5!(#1.before bottom) $),
+\n2 = {veclen(\x2,\y2)-\pgflinewidth}
+in
+([xshift=-\pgflinewidth] #1.before bottom) arc [start angle=270, delta angle=180,
+x radius=\n2, y radius=\n1]
+}
+
+\begin{tikzpicture}[auto,>=latex']
+
+    %Input Box
+%    \node [conBox] at (-1,0) (A) {$\rho_a(\ep)$};
+    \node [] at (-1.25,.25) (rhoA) {$\rho_a(\ep)$};
+    \node [closeC] at (-2., -.25) (ab1) {};
+    \node [closeC] at (-1.25,-.25) (ab2) {};
+    \node [openC] at (-.5,-.25) (ab3) {};
+    
+    %Input Box : Connection between circles
+    \draw (ab1) -- (ab2);
+    \draw (ab2) -- (ab3);
+    %Input Box : Mid-line and Boundary
+    \draw [draw=black] (-2.25,0) -- (-.25,0);
+    \draw [draw=black, rounded corners=5pt] (-2.25,-.5) rectangle (-.25,.5);
+    
+    %Input box to Channel Pair
+    \draw[->] (-.25,0) -- (.5,1);
+    \draw[->] (-.25,0) -- (.5,-1);
+    
+    %rho_b Side
+    %Pipe
+    \node [chanPipeB] at (2,1) (BC) {$\BC$};
+    \drawArc{BC};
+    
+    %Output Box
+    \node [] at (5,1.25) (rhoB) {$\rho_b(\ep)$};
+    \node [closeC] at (4.25, .75) (ob1) {};
+    \node [closeC] at (5,.75) (ob2) {};
+    \node [openC] at (5.75,.75) (ob3) {$\ep$};
+    
+    %Output Box : Connection between circles
+    \draw (ob1) -- (ob2);
+    \draw (ob2) -- (ob3);
+    %Output Box : Mid-line and Boundary
+    \draw [draw=red!50] (4,1) -- (6,1);
+    \draw [draw=red!50, rounded corners=5pt] (4,.5) rectangle (6,1.5);
+    
+    %rho_c Side
+    %Pipe
+    \node [chanPipeC] at (2,-1) (CC) {$\CC$};
+    \drawArc{CC};
+    
+    %Output Box
+    \node [] at (5,-.75) (rhoC) {$\rho_c(\ep)$};
+    \node [closeC] at (4.25, -1.25) (cb1) {};
+    \node [closeC] at (5,-1.25) (cb2) {};
+    \node [openC] at (5.75,-1.25) (cb3) {};
+    
+    %Output Box : Connection between circles
+    \draw (cb1) -- (cb2);
+    \draw (cb2) -- (cb3);
+    %Output Box : Mid-line and Boundary
+    \draw [draw=blue!50] (4,-1) -- (6,-1);
+    \draw [draw=blue!50, rounded corners=5pt] (4,-.5) rectangle (6,-1.5);
+    
+    
+    %Channel Pair to Output
+    \draw[->] (BC) -- (4,1);
+    \draw[->] (CC) -- (4,-1);
+
+\end{tikzpicture}
+
+\end{document}
+
