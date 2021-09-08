@@ -1,5 +1,5 @@
 # logSing
-This directory contains commented Jupyter Notebooks and LaTeX files used to
+This repository contains commented Jupyter Notebooks and LaTeX files used to
 generate figures in the manuscript titled ``Entropic singularities
 give rise to quantum transmission``. These files are briefly described below
 
