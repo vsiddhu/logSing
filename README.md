@@ -25,22 +25,22 @@ All three Jupyter Notebooks and a supporting Python function file described
 below can be reviewed using standard Jupyter Notebook and word processing
 software, respectively. The notebooks use standard Python packages (for
 instance see requirements.txt) and the supporting Python function file but are
-otherwise standalone documents which quickly generate three plots Fig3LS.png,
-Fig3Diff.png, and FigD.png in Figures 1, 3, and 5, respectively. 
+otherwise standalone documents which quickly generate three plots Fig3LS.pdf,
+Fig3Diff.pdf, and FigD.pdf in Figures 1, 3, and 5, respectively. 
 
 Fig3LS.ipynb        
 ----------
-Generates Figure 1 (Fig3LS.png), behaviour of the von-Neumann entropy in the
+Generates Figure 1 (Fig3LS.pdf), behaviour of the von-Neumann entropy in the
 vicinity of an epsilon log-singularity.
 
 Fig3LSDiff.ipynb
 ----------
-Generates Figure 3 (Fig3LSDiff.png), illustration of log-singularity based
+Generates Figure 3 (Fig3LSDiff.pdf), illustration of log-singularity based
 mechanism behind positivity of the channel coherent information.
 
 FigD.ipynb
 ----------
-Generates Figure 5 (FigD.png), non-additivity in a low-noise channel.
+Generates Figure 5 (FigD.pdf), non-additivity in a low-noise channel.
 
 helperFun.py
 ----------
