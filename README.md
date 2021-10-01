@@ -1,7 +1,10 @@
 # logSing
 This repository contains commented Jupyter Notebooks and LaTeX files used to
-generate figures in the manuscript titled ``Entropic singularities
-give rise to quantum transmission``. These files are briefly described below
+generate figures the following manuscript ``Entropic singularities give rise to
+quantum transmission``, [Nat. Commun. 12, 5750 (2021)
+](https://doi.org/10.1038/s41467-021-25954-0). These files are briefly
+described below.
+
 
 ----------
 LaTeX Files
